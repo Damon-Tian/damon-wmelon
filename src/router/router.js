@@ -11,47 +11,53 @@ const Photo = () => import("/@/page/photo/photo.vue")
 const Write = () => import("/@/page/write/write.vue")
 const NotFound = () => import("/@/page/404.vue")
 const routes = [
-      {
-            path: "/",
-            component: Layout,
-            children: [
-                  {
-                        path: "",
-                        component: Home
-                  },
-                  {
-                        path: "",
-                        component: Other,
-                        children: [
-                              {
-                                    path: "/article",
-                                    component: Article
-                              },
-                              {
-                                    path: "/article/:id",
-                                    component: ArticleId
-                              },
-                              {
-                                    path: "/photo",
-                                    component: Photo
-                              },
-                              {
-                                    path: "/write",
-                                    component: Write
-                              }
-                        ]
-                  },
-                  {
-                        path: "/:pathMatch(.*)*",
-                        name: "NotFound",
-                        component: NotFound
-                  }
-            ]
-      }
+    {
+        path: "/",
+        component: Layout,
+        children: [
+            {
+                path: "",
+                component: Home,
+            },
+            {
+                path: "",
+                component: Other,
+                children: [
+                    {
+                        path: "/article",
+                        component: Article,
+                    },
+                    {
+                        path: "/article/:id",
+                        component: ArticleId,
+                    },
+                    {
+                        path: "/photo",
+                        component: Photo,
+                    },
+                    {
+                        path: "/write",
+                        component: Write,
+                        name: "write",
+                    },
+                ],
+            },
+            {
+                path: "/:pathMatch(.*)*",
+                name: "NotFound",
+                component: NotFound,
+            },
+        ],
+    },
 ]
 
 export default createRouter({
-      history: createWebHistory(),
-      scrollBehavior: () => ({ top: 0 }),
-      routes
+    history: createWebHistory(),
+    scrollBehavior: () =>
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({ left: 0, top: 0 })
+            }, 500)
+        }),
+    routes,
 })

@@ -11,8 +11,23 @@ const app = createApp(App)
 // import mavonEditor from "mavon-editor"
 // import "mavon-editor/dist/css/index.css"
 
+import VMdEditor from "@kangc/v-md-editor"
+import "@kangc/v-md-editor/lib/style/base-editor.css"
+import githubTheme from "@kangc/v-md-editor/lib/theme/github.js"
+import "@kangc/v-md-editor/lib/theme/style/github.css"
+
+import VMdPreviewHtml from "@kangc/v-md-editor/lib/preview-html"
+import "@kangc/v-md-editor/lib/style/preview-html.css"
+
+// 引入使用主题的样式
+// import '@kangc/v-md-editor/lib/theme/style/vuepress';
+
+VMdEditor.use(githubTheme)
+
 app.use(router)
       .use(store)
       .use(ElementPlus)
+      .use(VMdEditor)
+      .use(VMdPreviewHtml)
       // .use(mavonEditor)
       .mount("#app")

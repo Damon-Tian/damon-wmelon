@@ -6,6 +6,7 @@
             "build": "vite build"
       },
       "dependencies": {
+            "@kangc/v-md-editor": "^2.2.6",
             "axios": "^0.21.1",
             "element-plus": "^v1.0.1-beta.18",
             "vue": "^3.0.4",
