@@ -26,7 +26,7 @@
         </transition>
         <div id="box">
             <div class="backs"></div>
-            <audio src="" id="dMusic" autoplay="false"></audio>
+            <audio src="" id="dMusic"></audio>
             <div class="name">{{ name }}---{{ singer }}</div>
             <div class="mPic">
                 <img :src="img" draggable="false" class="rotate" alt="" />
@@ -96,10 +96,9 @@ export default {
             this.dMusic.onended = function (e) {
                 that.nextSong()
             }
-            this.changeSong(0)
+            this.changeSong(0, true)
             setTimeout(() => {
                 this.pause = true
-                this.dMusic.pause()
             }, 0)
             // this.open()
         }, 0)
@@ -149,35 +148,37 @@ export default {
             this.pause = true
         },
         open() {
-            let that = this
-            let autoPlay = true
-            var cho = navigator.userAgent.substr(
-                navigator.userAgent.indexOf("Chrome"),
-                9
-            )
-            var chos = cho.split("/")
-            if (chos[1] >= 66) {
-                autoPlay = false
-            }
-            if (!autoPlay) {
-                window.addEventListener("click", function e() {
-                    that.dMusic.play()
-                    that.pause = false
-                    window.removeEventListener("click", e)
-                })
-            } else {
-                this.dMusic.play()
-                this.pause = false
-            }
+            // let that = this
+            // let autoPlay = true
+            // var cho = navigator.userAgent.substr(
+            //     navigator.userAgent.indexOf("Chrome"),
+            //     9
+            // )
+            // var chos = cho.split("/")
+            // if (chos[1] >= 66) {
+            //     autoPlay = false
+            // }
+            // if (!autoPlay) {
+            //     window.addEventListener("click", function e() {
+            //         that.dMusic.play()
+            //         that.pause = false
+            //         window.removeEventListener("click", e)
+            //     })
+            // } else {
+            this.dMusic.play()
+            this.pause = false
+            // }
         },
-        changeSong(index) {
+        changeSong(index, firstplay) {
             this.dMusic.src = this.list[index].src
             this.name = this.list[index].name
             this.singer = this.list[index].singer
             this.indexSong = index
             this.img = this.list[index].img
-            this.dMusic.play()
-            this.pause = false
+            if (!firstplay) {
+                this.dMusic.play()
+                this.pause = false
+            }
             $("#box .backs").css(
                 "background-image",
                 "url(" + this.list[index].img + ")"
