@@ -19,7 +19,7 @@
                 <p class="title">{{ item.title }}</p>
                 <div class="remark">
                     <p>{{ getArticleTime(item.gmtCreate) }}</p>
-                    <div v-html="item.content.slice(0, 200)"></div>
+                    <div v-html="item.content.slice(0, 300)"></div>
                 </div>
             </div>
             <div class="delete" v-if="$store.state.isDamon">

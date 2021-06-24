@@ -29,7 +29,15 @@
             <audio src="" id="dMusic"></audio>
             <div class="name">{{ name }}---{{ singer }}</div>
             <div class="mPic">
-                <img :src="img" draggable="false" class="rotate" alt="" />
+                <img
+                    :src="img"
+                    draggable="false"
+                    class="rotate"
+                    alt=""
+                    :style="{
+                        animationPlayState: pause ? 'paused' : 'running',
+                    }"
+                />
             </div>
             <div class="prosess">
                 <span class="now" @click="changeTime($event)"></span>
@@ -249,9 +257,9 @@ export default {
 }
 .rotate {
     animation: rotate 25s infinite linear;
-    &:hover {
-        animation-play-state: paused;
-    }
+    // &:hover {
+    //     animation-play-state: paused;
+    // }
 }
 #alls {
     display: flex;

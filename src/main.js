@@ -22,12 +22,28 @@ import "@kangc/v-md-editor/lib/style/preview-html.css"
 // 引入使用主题的样式
 // import '@kangc/v-md-editor/lib/theme/style/vuepress';
 
+VMdEditor.xss.extend({
+    // extend white list
+    whiteList: {
+        source: [],
+        iframe: [
+            "src",
+            "width",
+            "height",
+            "border",
+            "frameborder",
+            "scrolling",
+            "framespacing",
+            "allowfullscreen",
+        ],
+    },
+})
 VMdEditor.use(githubTheme)
 
 app.use(router)
-      .use(store)
-      .use(ElementPlus)
-      .use(VMdEditor)
-      .use(VMdPreviewHtml)
-      // .use(mavonEditor)
-      .mount("#app")
+    .use(store)
+    .use(ElementPlus)
+    .use(VMdEditor)
+    .use(VMdPreviewHtml)
+    // .use(mavonEditor)
+    .mount("#app")
