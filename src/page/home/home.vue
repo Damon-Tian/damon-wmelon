@@ -119,6 +119,7 @@ export default {
             })
         }
         let curPage = ref(1)
+        let getPageLoading = false
         async function getList() {
             //如要分页   当前页curPage   每页数量limit
             if (curPage.value == -1) {
@@ -126,6 +127,8 @@ export default {
             }
             isLoading.value = true
             nextTick(async () => {
+                if (getPageLoading) return
+                getPageLoading = true
                 if (curPage.value != 1) {
                     var h = $(document).height() - $(window).height()
                     $("html,body").animate({ scrollTop: h }, 500)
@@ -134,6 +137,7 @@ export default {
                     getHomeArticles(curPage.value, limit),
                     z(),
                 ])
+                getPageLoading = false
                 isLoading.value = false
                 if (res.data != "") {
                     curPage.value++

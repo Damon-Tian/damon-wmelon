@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="damon-article">
         <div class="previewIMG">
             <img
                 v-if="article.remarkExtend || imgSrc"
@@ -113,7 +113,7 @@
                     "
                 >
                     <p style="color: gray">{{ item.userName }}</p>
-                    <p style="color: black">{{ item.content }}</p>
+                    <p style="color: var(--color)">{{ item.content }}</p>
                     <p style="color: gray; font-size: 12px">
                         {{ item.gmtCreate }}
                     </p>
@@ -175,7 +175,7 @@
                                 <p style="color: gray">
                                     {{ itemx.userName }}
                                 </p>
-                                <p style="color: black">
+                                <p style="color: var(--color)">
                                     {{ itemx.content }}
                                 </p>
                                 <p style="color: gray; font-size: 12px">
@@ -333,11 +333,13 @@ export default {
 <style lang="less" scoped>
 @titleColor: #776f6f;
 @red: rgba(255, 0, 0, 0.295);
+.damon-article {
+    color: var(--color);
+}
 .article-content {
     min-height: 80vh;
     line-height: 36px;
     font-size: 16px;
-    color: rgb(36, 41, 46);
     @media screen and (max-width: 800px) {
         line-height: 28px;
         font-size: 14px;
@@ -399,8 +401,9 @@ img {
 .comment-block {
     margin: 50px 0;
     position: relative;
+    color: var(--color);
     .comment-input {
-        border: 1px dashed rgba(0, 0, 0, 0.12);
+        border: 1px dashed var(--box-shadow);
         border-radius: 3px;
         outline: none;
         padding: 10px;

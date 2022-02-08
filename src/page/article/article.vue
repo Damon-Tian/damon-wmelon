@@ -128,6 +128,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .card {
+    border: 1px solid var(--border-color);
     position: relative;
     margin: 0 auto 30px;
     display: flex;
@@ -205,6 +206,7 @@ export default {
             padding: 10px 0;
         }
         .remark {
+            color: var(--color);
             padding-top: 3%;
             display: -webkit-box;
             -webkit-box-orient: vertical;

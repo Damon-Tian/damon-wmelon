@@ -66,6 +66,34 @@
         <div class="small-player">
             <span v-if="pause" @click="open" class="play-img"></span>
             <span v-else @click="pausex" class="pause-img"></span>
+            <div class="d-theme">
+                <img
+                    v-if="theme == 'light'"
+                    @click="setTheme('dark')"
+                    src="/image/img/moon.png"
+                    alt=""
+                />
+                <img
+                    v-else
+                    src="/image/img/sun.png"
+                    @click="setTheme('light')"
+                    alt=""
+                />
+            </div>
+        </div>
+        <div class="d-theme">
+            <img
+                v-if="theme == 'light'"
+                @click="setTheme('dark')"
+                src="/image/img/moon.png"
+                alt=""
+            />
+            <img
+                v-else
+                src="/image/img/sun.png"
+                @click="setTheme('light')"
+                alt=""
+            />
         </div>
     </div>
 </template>
@@ -112,6 +140,9 @@ export default {
         }, 0)
     },
     methods: {
+        setTheme(value) {
+            this.$store.commit("setTheme", value)
+        },
         preSong() {
             if (this.indexSong == 0) {
                 this.indexSong = this.list.length - 1
@@ -231,7 +262,11 @@ export default {
         },
     },
     filters: {},
-    computed: {},
+    computed: {
+        theme() {
+            return this.$store.state.theme
+        },
+    },
 }
 </script>
 
@@ -262,12 +297,18 @@ export default {
     // }
 }
 #alls {
-    display: flex;
-    justify-content: center;
     position: fixed;
     right: 0;
     z-index: 1;
     top: 25%;
+    .d-theme {
+        margin-top: 20px;
+        margin-right: 20px;
+        text-align: right;
+        img {
+            width: 30px;
+        }
+    }
 }
 .small-player {
     position: fixed;
@@ -298,6 +339,9 @@ export default {
     .pause-img {
         background: gray url(/image/img/music/pause.png) no-repeat center/60%
             64%;
+    }
+    .d-theme {
+        display: none;
     }
 }
 #box {
@@ -416,8 +460,16 @@ export default {
         height: 0;
         opacity: 0;
     }
-    .small-player span {
-        display: block !important;
+    .small-player {
+        span {
+            display: block !important;
+        }
+        .d-theme {
+            display: block;
+        }
+    }
+    .d-theme {
+        display: none;
     }
 }
 </style>

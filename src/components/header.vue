@@ -276,7 +276,7 @@ export default {
         width: 100%;
         left: 0;
         height: 100vh;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: var(--bgColor08);
         ul {
             position: absolute;
             top: 30%;
@@ -288,7 +288,7 @@ export default {
                 padding: 10px;
                 margin: 10px;
                 cursor: pointer;
-                color: rgb(119, 111, 111);
+                color: var(--gray);
                 position: relative;
                 &::after {
                     content: "";
@@ -319,7 +319,7 @@ export default {
             width: 100%;
             text-align: center;
             font-size: 20px;
-            color: rgb(216, 145, 145);
+            color: var(--red);
         }
     }
     .d-backs {

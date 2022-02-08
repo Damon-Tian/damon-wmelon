@@ -1,3 +1,25 @@
+:root{
+      --color:#303133;
+      --bgColor:#fff;
+      --border-color:#EBEEF5;
+      --bgColor08:rgba(255,255,255,0.9);
+      --red:#d89191;
+      --gray:#776f6f;
+      --box-shadow:rgba(0,0,0,0.12);
+}
+.dark{
+      --color:white;
+      --bgColor:#000;
+      --border-color:rgb(255 255 255 / 16%);
+      --bgColor08:rgba(0,0,0,0.8);
+      --red:#ff0000e6;
+      --gray:#fff;
+      --box-shadow:rgba(255,255,255,0.48);
+}
+textarea,input{
+      color: var(--color);
+      background-color: var(--bgColor);
+}
 .d-content {
       max-width: 1150px;
       width: 100%;
@@ -9,8 +31,8 @@
 .top-word {
       text-align: center;
       font-size: 22px;
-      color: #776f6f;
-      text-shadow: 1px 1px 1px #776f6f;
+      color: var(--gray);
+      text-shadow: 1px 1px 1px var(--gray);
 }
 .page-enter-active,
 .page-leave-active {
@@ -46,6 +68,17 @@
       position: fixed;
       top: 0px;
       height: 100vh;
-      background-color: #fff;
+      background-color: var(--bgColor);
       z-index: 2;
+}
+body{
+      background-color: var(--bgColor);
+}
+
+.damon{
+      .el-card{
+            color:var(--color);
+            background-color: var(--bgColor);
+            border: 1px solid var(--border-color);
+      }
 }
